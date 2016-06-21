@@ -19,39 +19,28 @@ library
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
-executable request-client-exe
+executable client-exe
   hs-source-dirs:      app
-  main-is:             RequestReplyClient.hs
+  main-is:             HelloWorldClient.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , workbench
                      , zeromq4-haskell
                      , random
                      , bytestring
+                     , time
   default-language:    Haskell2010
 
-executable request-server-exe
+executable router-exe
   hs-source-dirs:      app
-  main-is:             RequestReplyServer.hs
+  main-is:             HelloWorldRouter.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , workbench
                      , zeromq4-haskell
                      , random
                      , bytestring
-  default-language:    Haskell2010
-
-executable message-queue-exe
-  hs-source-dirs:      app
-  main-is:             MessageQueueBroker.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , workbench
-                     , zeromq4-haskell
-                     , random
-                     , bytestring
-                     , time       
-                     , semigroups              
+                     , semigroups
   default-language:    Haskell2010  
 
 test-suite workbench-test

@@ -6,6 +6,8 @@ module Main where
 
 import Control.Monad
 import System.ZMQ4.Monadic
+import Text.Printf
+import Data.ByteString.Char8 (unpack)
 
 main :: IO ()
 main = runZMQ $ do
@@ -17,6 +19,6 @@ main = runZMQ $ do
     forM_ [1..10] $ \i -> do
         liftIO . putStrLn $ "Sending Hello " ++ show i ++ "…"
         send requester [] "Hello"
-        _ <- receive requester
-        liftIO . putStrLn $ "Received World " ++ show i
+        message <- receive requester
+        liftIO $ printf "received request: %s\n" . unpack $ message
 
